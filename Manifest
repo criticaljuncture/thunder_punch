@@ -1,0 +1,16 @@
+CHANGELOG.rdoc
+example/ec2_config.yml
+install.rb
+lib/govpulse/thunder_punch.rb
+
+lib/govpulse/utilities/utilities.rb
+
+lib/govpulse/recipes.rb
+lib/govpulse/recipes/ec2.rb
+lib/govpulse/recipes/ec2/ami.rb
+
+Manifest
+MIT-LICENSE
+Rakefile
+README.mdown
+TODO.mdown

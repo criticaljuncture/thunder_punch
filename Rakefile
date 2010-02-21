@@ -5,10 +5,10 @@ begin
   require 'jeweler'
   Jeweler::Tasks.new do |gem|
     gem.name = "thunder_punch"
-    gem.summary = %Q{TODO: one-line summary of your gem}
-    gem.description = %Q{TODO: longer description of your gem}
-    gem.email = "bob.burbach@gmail.com"
-    gem.homepage = "http://github.com/peregrinator/thunder_punch"
+    gem.summary = "Collection of capistano recipes for deployment and server tasks"
+    gem.description = "Collection of capistano recipes for deployment and server tasks"
+    gem.email = "govpulse@gmail.com"
+    gem.homepage = "http://github.com/govpulse/thunder_punch"
     gem.authors = ["Bob Burbach"]
     gem.add_development_dependency "thoughtbot-shoulda", ">= 0"
     # gem is a Gem::Specification... see http://www.rubygems.org/read/chapter/20 for additional settings

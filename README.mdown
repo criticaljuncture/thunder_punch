@@ -1,0 +1,21 @@
+#Thunder Punch
+
+Collection of capistrano recipes for deployment and other server tasks
+
+##Origin
+
+"Thunder Punch" was a version of the He-Man action figure from the original 1980s Masters of the Universe toy line. Ring caps were placed in a "backpack" integrated into the figure, which contained the striking mechanism for the caps (as well as tiny vents to allow smoke from a triggered cap to escape). This mechanism was triggered by drawing the figure's spring-loaded right arm back and releasing it to swing forward; the explosion of the cap was intended to simulate a thunderous noise caused by the supposed superhuman power of the character's punch. [via wikipedia]
+
+Because this collection of recipes is for capistrano and run with the cap command - this seemed a good name, sans the thunderous noise of course (this was found to be disrupting in work environments and cafes).
+
+##Recipes
+
+By creating a central and organized system for our tasks we can reduce our deploy.rb files to be project specific and make the addition of new tasks compatible and easily added.
+
+###EC2
+
+* Requires a yaml file named ec2_config.yml with the appropriate passwords, etc. See the example file.
+* ami.rb - recipes for uploading neccessary keys to server, bundling new ami, uploading to S3, and registering
+
+
+Copyright (c) 2010 GravyCones, released under the MIT license

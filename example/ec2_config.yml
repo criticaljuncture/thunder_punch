@@ -1,0 +1,8 @@
+#examples from Amazon documentation
+aws_key_location:      ~/.ssh/ #or where ever you store you aws keys
+ec2_private_key:       pk-HKZYKTAIG2ECMXYIBH3HXV4ZBZQ55CLO.pem
+ec2_x509_cert:         cert-HKZYKTAIG2ECMXYIBH3HXV4ZBZQ55CLO.pem
+aws_account_id:        495219933132
+ec2_architecture:      i386
+aws_access_key:        <aws-access-key-id>
+aws_secret_access_key: <aws-secret-access-key>
