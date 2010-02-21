@@ -8,6 +8,11 @@ Collection of capistrano recipes for deployment and other server tasks
 
 Because this collection of recipes is for capistrano and run with the cap command - this seemed a good name, sans the thunderous noise of course (this was found to be disrupting in work environments and cafes).
 
+##Requirements
+
+* Capistrano >=2.5.5
+* Add line 'require thunder_punch/govpulse/thunder_punch' to your deploy.rb file
+
 ##Recipes
 
 By creating a central and organized system for our tasks we can reduce our deploy.rb files to be project specific and make the addition of new tasks compatible and easily added.

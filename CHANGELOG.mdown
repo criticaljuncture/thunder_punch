@@ -1,0 +1,8 @@
+== 0.0.2 (February 20, 2010)
+
+* Add gem dependency for Capistrano >=2.5.5 [Bob Burbach - github.com/peregrinator]
+* Update README with requirements [Bob Burbach - github.com/peregrinator]
+
+== 0.0.1 (February 20, 2010)
+
+* Initial Creation of Thunder Punch Plugin [Bob Burbach - github.com/peregrinator]

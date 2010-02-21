@@ -18,10 +18,22 @@ Gem::Specification.new do |s|
   s.files = [
     ".document",
      ".gitignore",
+     "CHANGELOG.rdoc",
+     "MIT-LICENSE",
+     "Manifest",
+     "README.mdown",
      "Rakefile",
+     "TODO.mdown",
      "VERSION",
+     "example/ec2_config.yml",
+     "lib/govpulse/recipes.rb",
+     "lib/govpulse/recipes/ec2.rb",
+     "lib/govpulse/recipes/ec2/ami.rb",
+     "lib/govpulse/thunder_punch.rb",
+     "lib/govpulse/utilities/utilities.rb",
      "test/helper.rb",
-     "test/test_thunder_punch.rb"
+     "test/test_thunder_punch.rb",
+     "thunder_punch.gemspec"
   ]
   s.homepage = %q{http://github.com/govpulse/thunder_punch}
   s.rdoc_options = ["--charset=UTF-8"]

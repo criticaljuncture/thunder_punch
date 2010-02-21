@@ -1,3 +1,0 @@
-== 0.0.1 (February 20, 2010)
-
-* Initial Creation of Thunder Punch Plugin [Bob Burbach - github.com/peregrinator]
