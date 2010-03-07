@@ -76,7 +76,8 @@ Capistrano::Configuration.instance(:must_exist).load do |configuration|
     task :register_ami, :roles => :app do
       load_ec2_config unless ec2_config_loaded
       alert_user("You need to set :bundle_name via the command line\n `cap ec2:register_ami -s bundle_name=sample`", :abort => true) unless configuration[:bundle_name]
-      run_locally "ec2-register #{ec2_s3_bucket_name}/#{bundle_name}.manifest.xml"
+      ami_description = Capistrano::CLI.ui.ask "Description [enter for none]: "
+      run_locally "ec2-register #{ec2_s3_bucket_name}/#{bundle_name}.manifest.xml -n #{bundle_name} -a #{ec2_architecture} -d #{ami_description.dump}"
     end
     
   end
