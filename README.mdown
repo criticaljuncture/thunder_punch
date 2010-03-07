@@ -11,7 +11,9 @@ Because this collection of recipes is for capistrano and run with the cap comman
 ##Requirements
 
 * Capistrano >=2.5.5
-* Add line 'require thunder_punch/govpulse/thunder_punch' to your deploy.rb file
+* In your deploy.rb file:
+  * Add line 'require govpulse/thunder_punch'
+  * Add line 'set :ec2_config_location, File.join(File.dirname(__FILE__), "ec2_config.yml")'
 
 ##Recipes
 
