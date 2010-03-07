@@ -51,7 +51,11 @@ Capistrano::Configuration.instance(:must_exist).load do |configuration|
     desc 'Copy private key and X.509 certificate to server'
     task :copy_keys, :roles => :app do
       load_ec2_config unless ec2_config_loaded
-      upload "#{aws_key_location}/#{ec2_private_key} #{aws_key_location}/#{ec2_x509_cert} #{user}@#{domain}:/mnt", :via => :scp
+      
+      alert_user("Ensure you have owner:group set properly on your EC2 /mnt directory or scp will fail!"
+      
+      upload "#{aws_key_location}/#{ec2_private_key}", "/mnt/", :via => :scp
+      upload "#{aws_key_location}/#{ec2_x509_cert}",   "/mnt/", :via => :scp
     end
   
     desc 'Bundle your AMI (including fstab)'
