@@ -13,7 +13,7 @@ Because this collection of recipes is for capistrano and run with the cap comman
 * Capistrano >=2.5.5
 * In your deploy.rb file:
   * Add line 'require govpulse/thunder_punch'
-  * Add line 'set :ec2_config_location, File.join(File.dirname(__FILE__), "ec2_config.yml")'
+  * Add line 'set :ec2\_config\_location, File.join(File.dirname(__FILE__), "ec2\_config.yml")'
 
 ##Recipes
 
@@ -24,5 +24,10 @@ By creating a central and organized system for our tasks we can reduce our deplo
 * Requires a yaml file named ec2_config.yml with the appropriate passwords, etc. See the example file.
 * ami.rb - recipes for uploading neccessary keys to server, bundling new ami, uploading to S3, and registering
 
+##Known Issues
+
+###EC2
+
+* ec2:create\_new\_ami task doesn't work at the moment due to the ec2:bundle_ami task not returning properly. See the TODO for more info.
 
 Copyright (c) 2010 GravyCones, released under the MIT license

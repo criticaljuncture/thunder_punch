@@ -1,0 +1,1 @@
+* ec2:bundle_ami task does not return successfully. It completes successfully on the server but does not return. Thus the ec2:create_new_ami task doesn't work at the moment.
