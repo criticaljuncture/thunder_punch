@@ -52,7 +52,7 @@ Capistrano::Configuration.instance(:must_exist).load do |configuration|
     task :copy_keys, :roles => :app do
       load_ec2_config unless ec2_config_loaded
       
-      alert_user("Ensure you have owner:group set properly on your EC2 /mnt directory or scp will fail!"
+      alert_user("Ensure you have owner:group set properly on your EC2 /mnt directory or scp will fail!")
       
       upload "#{aws_key_location}/#{ec2_private_key}", "/mnt/", :via => :scp
       upload "#{aws_key_location}/#{ec2_x509_cert}",   "/mnt/", :via => :scp

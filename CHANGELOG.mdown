@@ -1,6 +1,6 @@
 == 0.0.3 (March 7, 2010)
 
-* Fix error in uploading keys to EC2 - missing aws_key_location in the command [Bob Burbach - github.com/peregrinator]
+* Fix error in uploading keys to EC2 - missing aws_key_location in the command and upload takes one path at a time [Bob Burbach - github.com/peregrinator]
 * Add roles to the tasks in ami.rb [Bob Burbach - github.com/peregrinator]
 * Add bucket name to store AMI to ec2_config.yml [Bob Burbach - github.com/peregrinator]
 
