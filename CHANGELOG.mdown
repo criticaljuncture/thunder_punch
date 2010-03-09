@@ -1,3 +1,7 @@
+== 0.0.4 (March 8, 2010)
+
+* Add ability to exclude specific files and directories from ami bundling [Bob Burbach - github.com/peregrinator]
+
 == 0.0.3 (March 7, 2010)
 
 * Fix error in uploading keys to EC2 - missing aws_key_location in the command and upload takes one path at a time [Bob Burbach - github.com/peregrinator]
