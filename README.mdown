@@ -30,4 +30,4 @@ By creating a central and organized system for our tasks we can reduce our deplo
 
 * ec2:create\_new\_ami task doesn't work at the moment due to the ec2:bundle_ami task not returning properly. See the TODO for more info.
 
-Copyright (c) 2010 GravyCones, released under the MIT license
+Copyright (c) 2010 Critical Juncture, released under the MIT license
