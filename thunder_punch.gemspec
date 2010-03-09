@@ -35,7 +35,7 @@ Gem::Specification.new do |s|
      "test/test_thunder_punch.rb",
      "thunder_punch.gemspec"
   ]
-  s.homepage = %q{http://github.com/govpulse/thunder_punch}
+  s.homepage = %q{http://github.com/trifecta/thunder_punch}
   s.rdoc_options = ["--charset=UTF-8"]
   s.require_paths = ["lib"]
   s.rubygems_version = %q{1.3.5}
