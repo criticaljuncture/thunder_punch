@@ -18,6 +18,7 @@ Capistrano::Configuration.instance(:must_exist).load do |configuration|
       set :aws_access_key,        ec2_config['aws_access_key']
       set :aws_secret_access_key, ec2_config['aws_secret_access_key']
       set :ec2_s3_bucket_name,    ec2_config['ec2_s3_bucket_name']
+      set :ami_excluded_items,    ec2_config['ami_excluded_items']
     
       alert_user('You need to set :aws_key_location in config/ec2_config.yml',                              :abort => true) unless :key_location
       alert_user('You need to set :ec2_private_key in config/ec2_config.yml',                               :abort => true) unless :ec2_private_key 
@@ -62,7 +63,23 @@ Capistrano::Configuration.instance(:must_exist).load do |configuration|
     task :bundle_ami, :roles => :app do
       load_ec2_config unless ec2_config_loaded
       alert_user("You need to set :bundle_name via the command line\n `cap ec2:bundle_ami -s bundle_name=sample`", :abort => true) unless configuration[:bundle_name]
-      sudo "ec2-bundle-vol -d /mnt --fstab /etc/fstab -k /mnt/#{ec2_private_key} -c /mnt/#{ec2_x509_cert} -u #{aws_account_id} -r #{ec2_architecture} -p #{bundle_name}"
+      default_ami_excluded_items = ['/sys/kernel/debug',
+                                    '/sys/kernel/security',
+                                    '/sys',
+                                    '/proc',
+                                    '/sys/fs/fuse/connections',
+                                    '/dev/pts',
+                                    '/dev',
+                                    '/media',
+                                    '/mnt',
+                                    '/proc',
+                                    '/sys',
+                                    '/etc/udev/rules.d/70-persistent-net.rules',
+                                    '/etc/udev/rules.d/z25_persistent-net.rules',
+                                    "/mnt/#{bundle_name}",
+                                    '/mnt/img-mnt']
+      ami_excluded_items = ami_excluded_items.nil? ? default_ami_excluded_items : ami_excluded_items.merge(default_ami_excluded_items)
+      sudo "ec2-bundle-vol -d /mnt --fstab /etc/fstab -k /mnt/#{ec2_private_key} -c /mnt/#{ec2_x509_cert} -u #{aws_account_id} -r #{ec2_architecture} -p #{bundle_name} --all --exclude #{ami_excluded_items.join(', ')}"
     end
   
     desc 'Upload your bundled AMI to S3'
