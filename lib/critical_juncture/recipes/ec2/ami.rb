@@ -78,8 +78,8 @@ Capistrano::Configuration.instance(:must_exist).load do |configuration|
                                     '/etc/udev/rules.d/z25_persistent-net.rules',
                                     "/mnt/#{bundle_name}",
                                     '/mnt/img-mnt']
-      ami_excluded_items = ami_excluded_items.nil? ? default_ami_excluded_items : ami_excluded_items.merge(default_ami_excluded_items)
-      sudo "ec2-bundle-vol -d /mnt --fstab /etc/fstab -k /mnt/#{ec2_private_key} -c /mnt/#{ec2_x509_cert} -u #{aws_account_id} -r #{ec2_architecture} -p #{bundle_name} --all --exclude #{ami_excluded_items.join(', ')}"
+
+      sudo "ec2-bundle-vol -d /mnt --fstab /etc/fstab -k /mnt/#{ec2_private_key} -c /mnt/#{ec2_x509_cert} -u #{aws_account_id} -r #{ec2_architecture} -p #{bundle_name} --all --exclude #{(ami_excluded_items | default_ami_excluded_items).join(', ')}"
     end
   
     desc 'Upload your bundled AMI to S3'
