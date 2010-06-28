@@ -1,3 +1,11 @@
+== 0.0.5 (June 28, 2010)
+
+* Rename example config to amazon.yml [Bob Burbach - github.com/peregrinator]
+* Change key names in config file [Bob Burbach - github.com/peregrinator]
+* Remove name-spacing of lib under critical juncture [Bob Burbach - github.com/peregrinator]
+* Add deployment recipes for a git-based deployment stategy [Bob Burbach - github.com/peregrinator]
+* Add recipes for bundler and database tasks (fixing bundle and downloading db) [Bob Burbach - github.com/peregrinator]
+
 == 0.0.4 (March 8, 2010)
 
 * Add ability to exclude specific files and directories from ami bundling [Bob Burbach - github.com/peregrinator]

@@ -12,8 +12,8 @@ Because this collection of recipes is for Capistrano and run with the cap comman
 
 * Capistrano >=2.5.5
 * In your deploy.rb file:
-  * Add line 'require critical\_juncture/thunder_punch'
-  * Add line 'set :ec2\_config\_location, File.join(File.dirname(__FILE__), "ec2\_config.yml")'
+  * Add line 'require thunder_punch'
+  * Add line 'set :ec2\_config\_location, File.join(File.dirname(__FILE__), "amazon.yml")'
 
 ##Recipes
 
@@ -21,11 +21,11 @@ By creating a central and organized system for our tasks we can reduce the conte
 
 ###EC2
 
-* Requires a yaml file named ec2_config.yml with the appropriate passwords, etc. See the example file.
+* Requires a yaml file named amazon.yml with the appropriate passwords, etc. See the example file.
 
 ####ami.rb
 * recipes for uploading necessary keys to server, bundling new AMI, uploading to S3, and registering a AMI
-* exclude files and directories from bundling by putting them in an array in ec2_config.yml
+* exclude files and directories from bundling by putting them in an array in amazon.yml
   * `ami_excluded_items: ['/home/my_user', '/var/some_secret_stuff']`
 
 ##Known Issues
