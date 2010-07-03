@@ -1,27 +1,35 @@
 Capistrano::Configuration.instance(:must_exist).load do
-  namespace :deploy, :roles => [:app, :static] do
+  namespace :deploy do
     desc "Deploy the app"
-    task :default do
+    task :default, :roles => [:app, :static, :worker] do
       update
       restart
       cleanup
     end
 
     desc "Setup a GitHub-style deployment."
-    task :setup, :except => { :no_release => true } do
+    task :setup, :roles => [:app, :static, :worker], :except => { :no_release => true } do
       run "git clone #{repository} #{current_path}"
     end
 
     desc "Update the deployed code."
-    task :update_code, :except => { :no_release => true } do
-      run "cd #{current_path}; git fetch origin; git reset --hard #{branch}"
+    task :update_code, :roles => [:app, :static, :worker], :except => { :no_release => true } do
+      run "cd #{current_path}; git fetch origin; git reset --hard #{branch}; git submodule update --init"
     end
+    
+    # "rollback" is actually a namespace with a default task
+    namespace :rollback do
+      desc "Rollback a single commit."
+      task :code, :roles => [:app, :static, :worker], :except => { :no_release => true } do
+        set :branch, "HEAD^"
+        deploy.default
+      end
 
-    desc "Rollback a single commit."
-    task :rollback, :except => { :no_release => true } do
-      set :branch, "HEAD^"
-      default
+      task :default, :roles => [:app, :static, :worker] do
+        rollback.code
+      end
     end
+    
   end
   
   #############################################################

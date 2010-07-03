@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{thunder_punch}
-  s.version = "0.0.4"
+  s.version = "0.0.5"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Bob Burbach"]
-  s.date = %q{2010-03-08}
+  s.date = %q{2010-07-02}
   s.description = %q{Collection of capistano recipes for deployment and server tasks}
   s.email = %q{govpulse@gmail.com}
   s.extra_rdoc_files = [
@@ -25,12 +25,22 @@ Gem::Specification.new do |s|
      "Rakefile",
      "TODO.mdown",
      "VERSION",
-     "example/ec2_config.yml",
-     "lib/critical_juncture/recipes.rb",
-     "lib/critical_juncture/recipes/ec2.rb",
-     "lib/critical_juncture/recipes/ec2/ami.rb",
-     "lib/critical_juncture/thunder_punch.rb",
-     "lib/critical_juncture/utilities/utilities.rb",
+     "example/amazon.yml",
+     "lib/recipes.rb",
+     "lib/recipes/bundler.rb",
+     "lib/recipes/database.rb",
+     "lib/recipes/deployment.rb",
+     "lib/recipes/deployment/deployment.rb",
+     "lib/recipes/deployment/migration.rb",
+     "lib/recipes/deployment/passenger.rb",
+     "lib/recipes/deployment/symlinks.rb",
+     "lib/recipes/ec2.rb",
+     "lib/recipes/ec2/ami.rb",
+     "lib/recipes/jekyll/jekyll.rb",
+     "lib/recipes/less/less.rb",
+     "lib/recipes/thinking_sphinx.rb",
+     "lib/thunder_punch.rb",
+     "lib/utilities/utilities.rb",
      "test/helper.rb",
      "test/test_thunder_punch.rb",
      "thunder_punch.gemspec"
@@ -38,7 +48,7 @@ Gem::Specification.new do |s|
   s.homepage = %q{http://github.com/trifecta/thunder_punch}
   s.rdoc_options = ["--charset=UTF-8"]
   s.require_paths = ["lib"]
-  s.rubygems_version = %q{1.3.5}
+  s.rubygems_version = %q{1.3.6}
   s.summary = %q{Collection of capistano recipes for deployment and server tasks}
   s.test_files = [
     "test/helper.rb",

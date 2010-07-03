@@ -3,9 +3,9 @@ Capistrano::Configuration.instance(:must_exist).load do
   # Passenger Restart
   #############################################################
 
-  namespace :passenger, :roles => [:app] do
+  namespace :passenger do
     desc "Restart Application"
-    task :restart do
+    task :restart, :roles => [:app] do
       run "touch #{current_path}/tmp/restart.txt"
     end
   end
@@ -14,9 +14,9 @@ Capistrano::Configuration.instance(:must_exist).load do
   # Passenger Status Checks
   #############################################################
 
-  namespace :passenger, :roles => [:app] do
+  namespace :passenger do
     desc "Check Passenger Status"
-    task :status do
+    task :status, :roles => [:app] do
       sudo 'passenger-status'
     end
 
