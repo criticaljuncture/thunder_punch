@@ -1,10 +1,13 @@
 Capistrano::Configuration.instance(:must_exist).load do
+  
+  #finalizing deploy is normal behaviour but in some (multi-server) environments we don't want that.
+  _cset :finalize_deploy, true
+  
   namespace :deploy do
     desc "Deploy the app"
     task :default, :roles => [:app, :static, :worker] do
       update
       restart
-      cleanup
     end
 
     desc "Setup a GitHub-style deployment."
@@ -12,21 +15,47 @@ Capistrano::Configuration.instance(:must_exist).load do
       run "git clone #{repository} #{current_path}"
     end
 
+    task :update do
+      transaction do
+        update_code
+      end
+    end
+
     desc "Update the deployed code."
     task :update_code, :roles => [:app, :static, :worker], :except => { :no_release => true } do
-      run "cd #{current_path}; git fetch origin; git reset --hard #{branch}; git submodule update --init"
+      run "cd #{current_path}; git fetch origin; git reset --hard origin/#{branch}; git submodule update --init"
+      if fetch(:finalize_deploy, true) 
+        finalize_update
+      end
     end
     
+    desc "Update the database (overwritten to avoid symlink)"
+    task :migrations do
+      transaction do
+        update_code
+      end
+      migrate
+    end
+    
+    
     # "rollback" is actually a namespace with a default task
+    # we overwrite the default task below to get our new behavior
     namespace :rollback do
-      desc "Rollback a single commit."
-      task :code, :roles => [:app, :static, :worker], :except => { :no_release => true } do
-        set :branch, "HEAD^"
+      desc "Moves the repo back to the previous version of HEAD"
+      task :repo, :except => { :no_release => true }, :roles => [:app, :static, :worker] do
+        set :branch, "HEAD@{1}"
         deploy.default
       end
 
-      task :default, :roles => [:app, :static, :worker] do
-        rollback.code
+      desc "Rewrite reflog so HEAD@{1} will continue to point to at the next previous release."
+      task :cleanup, :except => { :no_release => true }, :roles => [:app, :static, :worker] do
+        run "cd #{current_path}; git reflog delete --rewrite HEAD@{1}; git reflog delete --rewrite HEAD@{1}"
+      end
+
+      desc "Rolls back to the previously deployed version."
+      task :default do
+        rollback.repo
+        rollback.cleanup
       end
     end
     

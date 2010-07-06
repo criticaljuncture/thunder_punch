@@ -5,7 +5,7 @@ Capistrano::Configuration.instance(:must_exist).load do
 
   namespace :passenger do
     desc "Restart Application"
-    task :restart, :roles => [:app] do
+    task :restart, :except => { :no_release => true }, :roles => [:app] do
       run "touch #{current_path}/tmp/restart.txt"
     end
   end
