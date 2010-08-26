@@ -7,8 +7,8 @@ begin
     gem.name = "thunder_punch"
     gem.summary = "Collection of capistano recipes for deployment and server tasks"
     gem.description = "Collection of capistano recipes for deployment and server tasks"
-    gem.email = "govpulse@gmail.com"
-    gem.homepage = "http://github.com/trifecta/thunder_punch"
+    gem.email = "info@criticaljuncture.org"
+    gem.homepage = "http://github.com/critical/thunder_punch"
     gem.authors = ["Bob Burbach"]
     gem.add_development_dependency "thoughtbot-shoulda", ">= 0"
     gem.add_dependency('capistrano', '>= 2.5.5')
