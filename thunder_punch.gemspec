@@ -11,7 +11,7 @@ Gem::Specification.new do |s|
   s.authors = ["Bob Burbach"]
   s.date = %q{2010-08-26}
   s.description = %q{Collection of capistano recipes for deployment and server tasks}
-  s.email = %q{govpulse@gmail.com}
+  s.email = %q{info@criticaljuncture.org}
   s.extra_rdoc_files = [
     "README.mdown"
   ]
@@ -51,7 +51,7 @@ Gem::Specification.new do |s|
      "test/test_thunder_punch.rb",
      "thunder_punch.gemspec"
   ]
-  s.homepage = %q{http://github.com/trifecta/thunder_punch}
+  s.homepage = %q{http://github.com/critical/thunder_punch}
   s.rdoc_options = ["--charset=UTF-8"]
   s.require_paths = ["lib"]
   s.rubygems_version = %q{1.3.6}
