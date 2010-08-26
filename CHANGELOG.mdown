@@ -1,3 +1,13 @@
+== 0.0.7 (August 26, 2010)
+
+* Add a site recipe for uploading a maintenance page (assumes you've set up apache or nginx to watch for this page.)
+
+== 0.0.6 (July 6, 2010)
+
+* Fix problems with the code implementing git-based deployment strategy
+* Add a SASS task to compile stylesheets
+* Add a varnish task to clear the cache
+
 == 0.0.5 (June 28, 2010)
 
 * Rename example config to amazon.yml [Bob Burbach - github.com/peregrinator]

@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{thunder_punch}
-  s.version = "0.0.6"
+  s.version = "0.0.7"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Bob Burbach"]
-  s.date = %q{2010-07-06}
+  s.date = %q{2010-08-26}
   s.description = %q{Collection of capistano recipes for deployment and server tasks}
   s.email = %q{govpulse@gmail.com}
   s.extra_rdoc_files = [
@@ -26,6 +26,7 @@ Gem::Specification.new do |s|
      "TODO.mdown",
      "VERSION",
      "example/amazon.yml",
+     "files/app/maintenance.html.erb",
      "lib/recipes.rb",
      "lib/recipes/bundler.rb",
      "lib/recipes/database.rb",
@@ -40,6 +41,7 @@ Gem::Specification.new do |s|
      "lib/recipes/less/less.rb",
      "lib/recipes/sass.rb",
      "lib/recipes/sass/compile.rb",
+     "lib/recipes/site.rb",
      "lib/recipes/thinking_sphinx.rb",
      "lib/recipes/varnish.rb",
      "lib/recipes/varnish/cache.rb",
