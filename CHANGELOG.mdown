@@ -1,12 +1,16 @@
+== 0.0.8 (September 1, 2010)
+
+* Fix a recipe in thinking sphinx that was causing it to be run on app servers. It should only be run on servers defined as workers due to the fact it actually calls out to the db server to run the sphinx tasks [Bob Burbach - github.com/peregrinator]
+
 == 0.0.7 (August 26, 2010)
 
-* Add a site recipe for uploading a maintenance page (assumes you've set up apache or nginx to watch for this page.)
+* Add a site recipe for uploading a maintenance page (assumes you've set up apache or nginx to watch for this page.) [Bob Burbach - github.com/peregrinator]
 
 == 0.0.6 (July 6, 2010)
 
-* Fix problems with the code implementing git-based deployment strategy
-* Add a SASS task to compile stylesheets
-* Add a varnish task to clear the cache
+* Fix problems with the code implementing git-based deployment strategy [Bob Burbach - github.com/peregrinator]
+* Add a SASS task to compile stylesheets [Bob Burbach - github.com/peregrinator]
+* Add a varnish task to clear the cache [Bob Burbach - github.com/peregrinator]
 
 == 0.0.5 (June 28, 2010)
 
