@@ -2,7 +2,7 @@ Capistrano::Configuration.instance(:must_exist).load do
   namespace :thinking_sphinx do
   
     desc "Generate the Sphinx configuration file"
-    task :configure, :roles => [:app, :worker] do
+    task :configure, :roles => :worker do
       rake "thinking_sphinx:configure"
     end
   
