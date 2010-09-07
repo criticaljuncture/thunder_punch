@@ -1,4 +1,4 @@
-== 0.0.9 (September 1, 2010)
+== 0.0.9 (September 7, 2010)
 
 * Fix role on database tasks - was :database, should be :db to fit conventions
 
