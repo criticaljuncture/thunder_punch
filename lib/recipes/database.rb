@@ -5,7 +5,7 @@ Capistrano::Configuration.instance(:must_exist).load do
 
   namespace :database do
     desc "Check to see if database exists"
-    task :check_database_existence, :roles => [:database], :only => { :primary => true } do
+    task :check_database_existence, :roles => [:db], :only => { :primary => true } do
       db_exists = false
       run "mysql -u root -e \"SELECT COUNT(SCHEMA_NAME) FROM INFORMATION_SCHEMA.SCHEMATA WHERE SCHEMA_NAME = '#{database_to_check}';\" --batch --reconnect --show-warning --silent" do |ch, stream, data|
         if stream == :err
@@ -31,7 +31,7 @@ Capistrano::Configuration.instance(:must_exist).load do
 
   namespace :database do
     desc "Dump the current database"
-    task :backup, :roles => [:database], :only => { :primary => true } do
+    task :backup, :roles => [:db], :only => { :primary => true } do
       set :database_to_check, remote_db_name # used by the check_database_existence task
       db_exists = find_and_execute_task('database:check_database_existence')
 
@@ -51,20 +51,20 @@ Capistrano::Configuration.instance(:must_exist).load do
   namespace :database do
 
     desc "Backup remote database and load locally"
-    task :load_remote, :roles => [:database], :only => { :primary => true } do
+    task :load_remote, :roles => [:db], :only => { :primary => true } do
       backup
       copy
       load_copy
     end
 
     desc "Copy the current database" 
-    task :copy, :roles => [:database], :only => { :primary => true } do
+    task :copy, :roles => [:db], :only => { :primary => true } do
       `mkdir -p tmp`
       download(sql_file_path, "tmp/", :via=> :scp)
     end
 
     desc "Load the staging database locally"
-    task :load_copy, :roles => [:database], :only => { :primary => true } do
+    task :load_copy, :roles => [:db], :only => { :primary => true } do
       `script/dbconsole -p < tmp/#{remote_db_name}.sql`
     end
 
