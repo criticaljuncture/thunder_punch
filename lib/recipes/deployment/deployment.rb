@@ -12,7 +12,7 @@ Capistrano::Configuration.instance(:must_exist).load do
 
     desc "Setup a GitHub-style deployment."
     task :setup, :roles => [:app, :static, :worker], :except => { :no_release => true } do
-      run "git clone #{repository} #{current_path}"
+      run "cd #{deploy_to} && git clone #{repository} #{current_path}"
     end
 
     task :update do
