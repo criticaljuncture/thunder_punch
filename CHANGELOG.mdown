@@ -1,3 +1,8 @@
+== 0.0.10 (September 9, 2010)
+
+* Scope bundler to use the --deployment flag when deploying [Bob Burbach - github.com/peregrinator]
+* Scope bundler to only install the relevant environments when deploying [Bob Burbach - github.com/peregrinator]
+
 == 0.0.9 (September 7, 2010)
 
 * Fix role on database tasks - was :database, should be :db to fit conventions
