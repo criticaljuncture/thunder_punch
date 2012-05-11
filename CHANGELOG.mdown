@@ -1,3 +1,7 @@
+== 0.0.12 (May 11, 2012)
+
+* Use `bundle exec` when running `rake db:migrate`
+
 == 0.0.11 (December 3, 2010)
 
 * Force compilation of sass stylesheets. If you have an external error (like a missing directory or submodule) they won't update even if you fix it. We now just force to make sure updates happen on deployment.
