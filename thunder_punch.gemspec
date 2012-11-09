@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = "thunder_punch"
-  s.version = "0.0.12"
+  s.version = "0.0.13"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Bob Burbach"]
-  s.date = "2012-05-11"
+  s.date = "2012-11-09"
   s.description = "Collection of capistano recipes for deployment and server tasks"
   s.email = "info@criticaljuncture.org"
   s.extra_rdoc_files = [

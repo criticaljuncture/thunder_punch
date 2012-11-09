@@ -1,3 +1,7 @@
+== 0.0.13 (Nov 9, 2012)
+* Set rake to be "bundle exec rake" so that bundler is used for rake by
+  default. This prevents problems on servers that end up with multiple rakes.
+
 == 0.0.12 (May 11, 2012)
 
 * Use `bundle exec` when running `rake db:migrate`
