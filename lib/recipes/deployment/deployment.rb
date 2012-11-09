@@ -2,6 +2,7 @@ Capistrano::Configuration.instance(:must_exist).load do
   
   #finalizing deploy is normal behaviour but in some (multi-server) environments we don't want that.
   _cset :finalize_deploy, true
+  set :rake, "bundle exec rake"
   
   namespace :deploy do
     desc "Deploy the app"
