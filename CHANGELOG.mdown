@@ -1,14 +1,21 @@
+== 0.0.14 (Jan 7, 2013)
+* Remove references to the :static role (replacing with :worker role as
+  necessary). When using the 'gateway' option in Capistrano having two
+  roles run the same tasks leads to problems with symlinks getting nested.
+  Since :static and :worker roles are the same we just remove one of
+  them for simplicity. [Bob Burbach - github.com/peregrinator]
+
 == 0.0.13 (Nov 9, 2012)
 * Set rake to be "bundle exec rake" so that bundler is used for rake by
-  default. This prevents problems on servers that end up with multiple rakes.
+  default. This prevents problems on servers that end up with multiple rakes. [Bob Burbach - github.com/peregrinator]
 
 == 0.0.12 (May 11, 2012)
 
-* Use `bundle exec` when running `rake db:migrate`
+* Use `bundle exec` when running `rake db:migrate` [Bob Burbach - github.com/peregrinator]
 
 == 0.0.11 (December 3, 2010)
 
-* Force compilation of sass stylesheets. If you have an external error (like a missing directory or submodule) they won't update even if you fix it. We now just force to make sure updates happen on deployment.
+* Force compilation of sass stylesheets. If you have an external error (like a missing directory or submodule) they won't update even if you fix it. We now just force to make sure updates happen on deployment. [Bob Burbach - github.com/peregrinator]
 
 == 0.0.10 (September 9, 2010)
 
@@ -17,7 +24,7 @@
 
 == 0.0.9 (September 7, 2010)
 
-* Fix role on database tasks - was :database, should be :db to fit conventions
+* Fix role on database tasks - was :database, should be :db to fit conventions [Bob Burbach - github.com/peregrinator]
 
 == 0.0.8 (September 1, 2010)
 
