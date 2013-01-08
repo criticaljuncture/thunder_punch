@@ -6,13 +6,13 @@ Capistrano::Configuration.instance(:must_exist).load do
   
   namespace :deploy do
     desc "Deploy the app"
-    task :default, :roles => [:app, :static, :worker] do
+    task :default, :roles => [:app, :worker] do
       update
       restart
     end
 
     desc "Setup a GitHub-style deployment."
-    task :setup, :roles => [:app, :static, :worker], :except => { :no_release => true } do
+    task :setup, :roles => [:app, :worker], :except => { :no_release => true } do
       run "cd #{deploy_to} && git clone #{repository} #{current_path}"
     end
 
@@ -23,7 +23,7 @@ Capistrano::Configuration.instance(:must_exist).load do
     end
 
     desc "Update the deployed code."
-    task :update_code, :roles => [:app, :static, :worker], :except => { :no_release => true } do
+    task :update_code, :roles => [:app, :worker], :except => { :no_release => true } do
       run "cd #{current_path}; git fetch origin; git reset --hard origin/#{branch}; git submodule update --init"
       if fetch(:finalize_deploy, true) 
         finalize_update
@@ -43,13 +43,13 @@ Capistrano::Configuration.instance(:must_exist).load do
     # we overwrite the default task below to get our new behavior
     namespace :rollback do
       desc "Moves the repo back to the previous version of HEAD"
-      task :repo, :except => { :no_release => true }, :roles => [:app, :static, :worker] do
+      task :repo, :except => { :no_release => true }, :roles => [:app, :worker] do
         set :branch, "HEAD@{1}"
         deploy.default
       end
 
       desc "Rewrite reflog so HEAD@{1} will continue to point to at the next previous release."
-      task :cleanup, :except => { :no_release => true }, :roles => [:app, :static, :worker] do
+      task :cleanup, :except => { :no_release => true }, :roles => [:app, :worker] do
         run "cd #{current_path}; git reflog delete --rewrite HEAD@{1}; git reflog delete --rewrite HEAD@{1}"
       end
 

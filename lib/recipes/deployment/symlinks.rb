@@ -19,7 +19,7 @@ Capistrano::Configuration.instance(:must_exist).load do
  
   namespace :symlinks do
     desc "Create all sylinks (removes directories/files if they exist first)"
-    task :create, :roles => [:app, :static, :worker], :except => { :no_release => true } do
+    task :create, :roles => [:app, :worker], :except => { :no_release => true } do
  
       commands = standard_symlinks.map do |to, from|
         "rm -rf #{current_path}/#{to} && ln -s #{shared_path}/#{from} #{current_path}/#{to}"
