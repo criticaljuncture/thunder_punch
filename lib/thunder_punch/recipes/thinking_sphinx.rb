@@ -50,7 +50,7 @@ Capistrano::Configuration.instance(:must_exist).load do
 
     def rake(*tasks)
       rails_env = fetch(:rails_env, "production")
-      rake = fetch(:rake, "rake")
+      rake = fetch(:rake, "bundle exec rake")
       tasks.each do |t|
         run "if [ -d #{release_path} ]; then cd #{release_path}; else cd #{current_path}; fi; #{rake} RAILS_ENV=#{rails_env} #{t}"
       end

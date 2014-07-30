@@ -12,13 +12,13 @@ Capistrano::Configuration.instance(:must_exist).load do
       via the migrate_env variable. Finally, you can specify the full path to the
       rake executable by setting the rake variable. The defaults are:
 
-        set :rake,           "rake"
+        set :rake,           "bundle exec rake"
         set :rails_env,      "production"
         set :migrate_env,    ""
         set :migrate_target, :latest
     DESC
     task :migrate, :roles => db_migration_roles, :only => { :primary => true } do
-      rake = fetch(:rake, "rake")
+      rake = fetch(:rake, "bundle exec rake")
       rails_env = fetch(:rails_env, "production")
       migrate_env = fetch(:migrate_env, "")
       migrate_target = fetch(:migrate_target, :latest)
