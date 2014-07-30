@@ -15,41 +15,8 @@ Gem::Specification.new do |s|
   s.extra_rdoc_files = [
     "README.mdown"
   ]
-  s.files = [
-    ".document",
-    "CHANGELOG.mdown",
-    "MIT-LICENSE",
-    "Manifest",
-    "README.mdown",
-    "Rakefile",
-    "TODO.mdown",
-    "VERSION",
-    "example/amazon.yml",
-    "files/app/maintenance.html.erb",
-    "lib/recipes.rb",
-    "lib/recipes/bundler.rb",
-    "lib/recipes/database.rb",
-    "lib/recipes/deployment.rb",
-    "lib/recipes/deployment/deployment.rb",
-    "lib/recipes/deployment/migration.rb",
-    "lib/recipes/deployment/passenger.rb",
-    "lib/recipes/deployment/symlinks.rb",
-    "lib/recipes/ec2.rb",
-    "lib/recipes/ec2/ami.rb",
-    "lib/recipes/jekyll/jekyll.rb",
-    "lib/recipes/less/less.rb",
-    "lib/recipes/sass.rb",
-    "lib/recipes/sass/compile.rb",
-    "lib/recipes/site.rb",
-    "lib/recipes/thinking_sphinx.rb",
-    "lib/recipes/varnish.rb",
-    "lib/recipes/varnish/cache.rb",
-    "lib/thunder_punch.rb",
-    "lib/utilities/utilities.rb",
-    "test/helper.rb",
-    "test/test_thunder_punch.rb",
-    "thunder_punch.gemspec"
-  ]
+  s.files         = `git ls-files`.split("\n")
+  s.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")
   s.homepage = "http://github.com/critical/thunder_punch"
   s.require_paths = ["lib"]
   s.rubygems_version = "1.8.10"

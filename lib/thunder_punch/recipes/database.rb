@@ -1,11 +1,13 @@
 Capistrano::Configuration.instance(:must_exist).load do
+  _cset :database_roles, [:db]
+
   #############################################################
   # Check for Existing Database
   #############################################################
 
   namespace :database do
     desc "Check to see if database exists"
-    task :check_database_existence, :roles => [:db], :only => { :primary => true } do
+    task :check_database_existence, :roles => database_roles, :only => { :primary => true } do
       db_exists = false
       run "mysql -u root -e \"SELECT COUNT(SCHEMA_NAME) FROM INFORMATION_SCHEMA.SCHEMATA WHERE SCHEMA_NAME = '#{database_to_check}';\" --batch --reconnect --show-warning --silent" do |ch, stream, data|
         if stream == :err
@@ -31,42 +33,40 @@ Capistrano::Configuration.instance(:must_exist).load do
 
   namespace :database do
     desc "Dump the current database"
-    task :backup, :roles => [:db], :only => { :primary => true } do
+    task :backup, :roles => database_roles, :only => { :primary => true } do
       set :database_to_check, remote_db_name # used by the check_database_existence task
       db_exists = find_and_execute_task('database:check_database_existence')
 
-      if db_exists 
+      if db_exists
         sudo "sudo mkdir -p #{db_path}"
         run "mysqldump -u root --opt #{remote_db_name} > #{sql_file_path}"
       else
         abort "There is no database named #{remote_db_name} to backup"
       end
-    end #end task :backup
-  end #end namspace 
+    end
+  end
 
   #############################################################
   # Load Remote Staging Database to Local Machine
   #############################################################
 
   namespace :database do
-
     desc "Backup remote database and load locally"
-    task :load_remote, :roles => [:db], :only => { :primary => true } do
+    task :load_remote, :roles => database_roles, :only => { :primary => true } do
       backup
       copy
       load_copy
     end
 
-    desc "Copy the current database" 
-    task :copy, :roles => [:db], :only => { :primary => true } do
+    desc "Copy the current database"
+    task :copy, :roles => database_roles, :only => { :primary => true } do
       `mkdir -p tmp`
       download(sql_file_path, "tmp/", :via=> :scp)
     end
 
     desc "Load the staging database locally"
-    task :load_copy, :roles => [:db], :only => { :primary => true } do
-      `script/dbconsole -p < tmp/#{remote_db_name}.sql`
+    task :load_copy, :roles => database_roles, :only => { :primary => true } do
+      `rails dbconsole -p < tmp/#{remote_db_name}.sql`
     end
-
-  end #end namspace
+  end
 end

@@ -1,13 +1,15 @@
 Capistrano::Configuration.instance(:must_exist).load do
+  _cset :db_migration_roles, [:db]
+
   namespace :deploy do
     desc <<-DESC
-      Run the migrate rake task. By default, it runs this in most recently \
-      deployed version of the app. However, you can specify a different release \
-      via the migrate_target variable, which must be one of :latest (for the \
-      default behavior), or :current (for the release indicated by the \
-      `current' symlink). Strings will work for those values instead of symbols, \
-      too. You can also specify additional environment variables to pass to rake \
-      via the migrate_env variable. Finally, you can specify the full path to the \
+      Run the migrate rake task. By default, it runs this in most recently
+      deployed version of the app. However, you can specify a different release
+      via the migrate_target variable, which must be one of :latest (for the
+      default behavior), or :current (for the release indicated by the
+      `current' symlink). Strings will work for those values instead of symbols,
+      too. You can also specify additional environment variables to pass to rake
+      via the migrate_env variable. Finally, you can specify the full path to the
       rake executable by setting the rake variable. The defaults are:
 
         set :rake,           "rake"
@@ -15,7 +17,7 @@ Capistrano::Configuration.instance(:must_exist).load do
         set :migrate_env,    ""
         set :migrate_target, :latest
     DESC
-    task :migrate, :roles => :worker, :only => { :primary => true } do
+    task :migrate, :roles => db_migration_roles, :only => { :primary => true } do
       rake = fetch(:rake, "rake")
       rails_env = fetch(:rails_env, "production")
       migrate_env = fetch(:migrate_env, "")
@@ -30,5 +32,4 @@ Capistrano::Configuration.instance(:must_exist).load do
       run "cd #{directory}; #{rake} RAILS_ENV=#{rails_env} #{migrate_env} db:migrate"
     end
   end #namespace
-  
 end
