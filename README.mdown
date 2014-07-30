@@ -1,37 +1,46 @@
 #Thunder Punch
 
-Collection of Capistrano recipes for deployment and other server tasks
+Collection of Capistrano recipes for deployment and other server tasks.
 
-##Origin
+NOTE: Version 0.1.0 represents a breaking change from 0.0.14 and below. See CHANGELOG for details.
+
+##Requirements
+
+* Capistrano >=2.5.5 (not compatible with Capistrano 3)
+
+##Installation
+
+* In Gemfile
+```ruby
+  gem 'capistrano', '~> 2.15.5'
+  gem 'thunder_punch', '~> 0.1.0'
+end
+```
+
+###Simple setup
+
+* In config/deploy.rb
+```ruby
+  # deploy recipes - these should be required at the very bottom of deploy.rb
+  require 'thunder_punch'
+  # optional recipes that you want to make use of go here...
+  require 'thunder_punch/recipes/passenger'
+  require 'thunder_punch/recipes/thinking_sphinx'
+```
+
+###Complex setup
+*TODO*
+
+##Reasoning
+
+By creating a central and organized system for our tasks we can reduce the content in our deploy.rb files to be project specific and make the addition of new tasks easy and compatible.
+
+##Name Origin
 
 "Thunder Punch" was a version of the He-Man action figure from the original 1980s Masters of the Universe toy line. Ring caps were placed in a "backpack" integrated into the figure, which contained the striking mechanism for the caps (as well as tiny vents to allow smoke from a triggered cap to escape). This mechanism was triggered by drawing the figure's spring-loaded right arm back and releasing it to swing forward; the explosion of the cap was intended to simulate a thunderous noise caused by the supposed superhuman power of the character's punch. [via wikipedia]
 
 Because this collection of recipes is for Capistrano and run with the cap command - this seemed a good name, sans the thunderous noise of course (this was found to be disrupting in work environments and cafes).
 
-##Requirements
+##License
 
-* Capistrano >=2.5.5
-* In your deploy.rb file:
-  * Add line 'require thunder_punch'
-  * Add line 'set :ec2\_config\_location, File.join(File.dirname(__FILE__), "amazon.yml")'
-
-##Recipes
-
-By creating a central and organized system for our tasks we can reduce the content in our deploy.rb files to be project specific and make the addition of new tasks easy and compatible.
-
-###EC2
-
-* Requires a yaml file named amazon.yml with the appropriate passwords, etc. See the example file.
-
-####ami.rb
-* recipes for uploading necessary keys to server, bundling new AMI, uploading to S3, and registering a AMI
-* exclude files and directories from bundling by putting them in an array in amazon.yml
-  * `ami_excluded_items: ['/home/my_user', '/var/some_secret_stuff']`
-
-##Known Issues
-
-###EC2
-
-* ec2:create\_new\_ami task doesn't work at the moment due to the ec2:bundle_ami task not returning properly. See the TODO for more info.
-
-Copyright (c) 2010-2013 Critical Juncture, released under the MIT license
+Copyright (c) 2010-2014 Critical Juncture, released under the MIT license

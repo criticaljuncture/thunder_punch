@@ -1,3 +1,9 @@
+== 0.1.0 (Jul, 30, 2014)
+* Remove ec2 and less recipes as these are out of date and not in use
+* Change which recipes are loaded by default so that the gem footprint is smaller
+* Change setup such that additional recipes can be opted into as desired
+* Make the roles for each recipe group overridable via an apps deploy file to allow for more complex/unique server setups. Recipes now have very basic default roles assigned and you'll need to define roles you were dependent on before (like :worker) via the new options.
+
 == 0.0.14 (Jan 7, 2013)
 * Remove references to the :static role (replacing with :worker role as
   necessary). When using the 'gateway' option in Capistrano having two
