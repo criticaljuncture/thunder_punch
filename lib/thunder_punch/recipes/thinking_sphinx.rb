@@ -47,13 +47,5 @@ Capistrano::Configuration.instance(:must_exist).load do
     task :create_shared_sphinx_folder, :roles => thinking_sphinx_roles do
       run "mkdir -p #{shared_path}/db/sphinx/production"
     end
-
-    def rake(*tasks)
-      rails_env = fetch(:rails_env, "production")
-      rake = fetch(:rake, "bundle exec rake")
-      tasks.each do |t|
-        run "if [ -d #{release_path} ]; then cd #{release_path}; else cd #{current_path}; fi; #{rake} RAILS_ENV=#{rails_env} #{t}"
-      end
-    end
   end
 end
