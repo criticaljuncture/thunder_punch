@@ -31,6 +31,10 @@ end
 ###Complex setup
 *TODO*
 
+#### Assets recipe
+* In order to use the assets recipes you'll need to copy the two files in files/assets into their appropriate places. See the comments at the top of each file for where to place them.
+* Once the files are copied you can use assets:precompile_if_needed for fast deploys that only precompile assets when it's neccessary.
+
 ##Reasoning
 
 By creating a central and organized system for our tasks we can reduce the content in our deploy.rb files to be project specific and make the addition of new tasks easy and compatible.
