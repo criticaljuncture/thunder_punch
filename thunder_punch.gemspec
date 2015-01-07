@@ -5,34 +5,75 @@
 
 Gem::Specification.new do |s|
   s.name = "thunder_punch"
-  s.version = "0.1.2"
+  s.version = "0.1.3"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Bob Burbach"]
-  s.date = "2014-07-30"
+  s.date = "2015-01-07"
   s.description = "Collection of capistano recipes for deployment and server tasks"
   s.email = "info@criticaljuncture.org"
   s.extra_rdoc_files = [
     "README.mdown"
   ]
-  s.files         = `git ls-files`.split("\n")
-  s.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")
+  s.files = [
+    ".document",
+    "CHANGELOG.mdown",
+    "MIT-LICENSE",
+    "Manifest",
+    "README.mdown",
+    "Rakefile",
+    "TODO.mdown",
+    "VERSION",
+    "example/amazon.yml",
+    "files/app/maintenance.html.erb",
+    "files/assets/assets.rake",
+    "files/assets/assets_versions.rb",
+    "lib/thunder_punch.rb",
+    "lib/thunder_punch/recipes.rb",
+    "lib/thunder_punch/recipes/apache.rb",
+    "lib/thunder_punch/recipes/asset_pipeline/assets_version.rb",
+    "lib/thunder_punch/recipes/asset_pipeline/precompile.rb",
+    "lib/thunder_punch/recipes/assets.rb",
+    "lib/thunder_punch/recipes/bundler.rb",
+    "lib/thunder_punch/recipes/database.rb",
+    "lib/thunder_punch/recipes/deployment.rb",
+    "lib/thunder_punch/recipes/deployment/deployment.rb",
+    "lib/thunder_punch/recipes/deployment/git_based.rb",
+    "lib/thunder_punch/recipes/deployment/migration.rb",
+    "lib/thunder_punch/recipes/deployment/symlinks.rb",
+    "lib/thunder_punch/recipes/honeybadger.rb",
+    "lib/thunder_punch/recipes/jekyll/jekyll.rb",
+    "lib/thunder_punch/recipes/passenger.rb",
+    "lib/thunder_punch/recipes/sass.rb",
+    "lib/thunder_punch/recipes/sass/compile.rb",
+    "lib/thunder_punch/recipes/site.rb",
+    "lib/thunder_punch/recipes/thinking_sphinx.rb",
+    "lib/thunder_punch/recipes/varnish.rb",
+    "lib/thunder_punch/recipes/varnish/cache.rb",
+    "lib/thunder_punch/utilities/utilities.rb",
+    "test/helper.rb",
+    "test/test_thunder_punch.rb",
+    "thunder_punch.gemspec"
+  ]
   s.homepage = "http://github.com/critical/thunder_punch"
   s.require_paths = ["lib"]
-  s.rubygems_version = "1.8.10"
+  s.rubygems_version = "1.8.29"
   s.summary = "Collection of capistano recipes for deployment and server tasks"
 
   if s.respond_to? :specification_version then
     s.specification_version = 3
 
     if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
+      s.add_runtime_dependency(%q<jeweler>, [">= 0"])
       s.add_development_dependency(%q<thoughtbot-shoulda>, [">= 0"])
       s.add_runtime_dependency(%q<capistrano>, [">= 2.5.5"])
     else
+      s.add_dependency(%q<jeweler>, [">= 0"])
       s.add_dependency(%q<thoughtbot-shoulda>, [">= 0"])
       s.add_dependency(%q<capistrano>, [">= 2.5.5"])
     end
   else
+    s.add_dependency(%q<jeweler>, [">= 0"])
     s.add_dependency(%q<thoughtbot-shoulda>, [">= 0"])
     s.add_dependency(%q<capistrano>, [">= 2.5.5"])
   end
