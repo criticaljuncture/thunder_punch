@@ -18,5 +18,18 @@ Capistrano::Configuration.instance(:must_exist).load do
 
       run "#{cmds.join(' && ')}"
     end
+
+    namespace :dotenv do
+      task :notify_deploy, :roles => honeybadger_roles do
+        api_key = fetch(:honeybadger_api_key_var, "$HONEYBADGER_API_KEY")
+        precommand = fetch(:honeybadger_cli_precommand, "")
+
+        cmds = ["cd #{current_path}"]
+        cmds << precommand if precommand != ""
+        cmds << "bundle exec dotenv ./honeybadger_cli.sh #{rails_env} #{repository} #{real_revision} #{honeybadger_user} #{api_key}"
+
+        run "#{cmds.join(' && ')}"
+      end
+    end
   end
 end

@@ -1,3 +1,6 @@
+== 0.1.5 (Sept 17, 2015)
+* support the new honeybadger cli via dotenv
+
 == 0.1.4 (Jul 15, 2015)
 * add a task to honeybadger recipes to support the new honeybadger cli way of deployment notification via ENV variables
 
