@@ -1,3 +1,6 @@
+== 0.1.6 (Sept 17, 2015)
+* update the honeydager cli via dotenv to no longer pass an env var name as that doesn't work reliably. Add note about usage
+
 == 0.1.5 (Sept 17, 2015)
 * support the new honeybadger cli via dotenv
 
