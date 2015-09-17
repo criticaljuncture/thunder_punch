@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = "thunder_punch"
-  s.version = "0.1.3"
+  s.version = "0.1.5"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Bob Burbach"]
-  s.date = "2015-01-07"
+  s.date = "2015-09-17"
   s.description = "Collection of capistano recipes for deployment and server tasks"
   s.email = "info@criticaljuncture.org"
   s.extra_rdoc_files = [
@@ -18,6 +18,8 @@ Gem::Specification.new do |s|
   s.files = [
     ".document",
     "CHANGELOG.mdown",
+    "Gemfile",
+    "Gemfile.lock",
     "MIT-LICENSE",
     "Manifest",
     "README.mdown",
@@ -57,7 +59,7 @@ Gem::Specification.new do |s|
   ]
   s.homepage = "http://github.com/critical/thunder_punch"
   s.require_paths = ["lib"]
-  s.rubygems_version = "1.8.29"
+  s.rubygems_version = "1.8.11"
   s.summary = "Collection of capistano recipes for deployment and server tasks"
 
   if s.respond_to? :specification_version then
